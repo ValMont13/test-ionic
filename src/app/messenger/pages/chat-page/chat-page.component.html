@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Chat view</ion-title>
+    <ion-button class="md-hidden" routerLink="settings">Settings</ion-button>
+    <ion-button class="sm-hidden" routerLink="." [queryParams]="{ settings: !settingsOpened }">Settings</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [forceOverscroll]="false">
+  <div style="display: flex">
+    <app-chats-tree [chats]="chats" class="sm-hidden"></app-chats-tree>
+    <div style="display:flex;">
+      <app-chats-conv [messages]="messages"></app-chats-conv>
+      <!-- pour une apparition plus smooth, utiliser du CSS et des classes plutôt que *ngIf -->
+      <app-chats-settings *ngIf="settingsOpened"></app-chats-settings>
+    </div>
+  </div>
+</ion-content>
